@@ -29,10 +29,18 @@ foreach ($rawContentArray as $key => $value) {
 	}
 }
 
-if($text === "/startrequest" || $text === "/why") {
-	file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=/Images");
-} else {
-	file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=What do you mean?");
+switch ($text){
+	case "/startrequest@BoysBoysBoysImageReceiverBot":
+	case "/startrequest":
+		file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=/newpoll");
+		break;
+	case "/why@BoysBoysBoysImageReceiverBot":	
+	case "/why":
+		file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=Insert reason");
+		break;
+	default:
+		file_get_contents($website."/sendmessage?chat_id=".$chatId."&text=What do you mean?");
+		break;
 }
 
 ?>
